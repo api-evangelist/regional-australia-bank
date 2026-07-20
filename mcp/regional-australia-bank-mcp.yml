@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+note: >-
+  No official hosted/remote MCP server was found for Regional Australia Bank.
+  This is a DERIVED candidate tool list covering only the PUBLIC, unauthenticated
+  Product Reference Data operations - the surface an agent can safely call without
+  CDR accreditation. Authenticated CDR consumer-data operations are intentionally
+  excluded (they require accredited-data-recipient registration and OAuth2/OIDC).
+server:
+  name: regional-australia-bank-products
+  transport: http
+  url: null
+tools:
+  - name: list_banking_products
+    description: >-
+      List Regional Australia Bank's openly offered banking products (filterable
+      by effective window, updated-since, brand, and product category).
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - name: get_banking_product_detail
+    description: Get detailed information for a single openly offered banking product by productId.
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#getBankingProductDetail

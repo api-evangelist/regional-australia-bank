@@ -1,0 +1,23 @@
+# Regional Australia Bank
+
+> Regional Australia Bank is a customer-owned (mutual) authorised deposit-taking institution (ADI) in regional New South Wales. As an active ADI it is a designated data holder under Australia's Consumer Data Right (CDR / Open Banking) and exposes a public, unauthenticated Product Reference Data (PRD) API conforming to the DSB Consumer Data Standards. All consumer data sharing beyond product data is gated behind the CDR OAuth2/OIDC accredited-data-recipient model. This llms.txt was generated from the API Evangelist catalog entry.
+
+## APIs
+
+- [Regional Australia Bank CDR Product Reference Data API](https://www.regionalaustraliabank.com.au/help-and-support/data-sharing): Public, unauthenticated CDR PRD API (Get Products, Get Product Detail) at /cds-au/v1/banking/products. Base URL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+
+## Specs
+
+- [OpenAPI (CDS Banking API 1.36.0)](openapi/regional-australia-bank-cds-banking-products-openapi.yml): Shared DSB Consumer Data Standards Banking API contract that the PRD host implements.
+- [Authentication profile](authentication/regional-australia-bank-authentication.yml): Public PRD is unauthenticated; consumer data sharing uses CDR OAuth2/OIDC (FAPI-aligned).
+- [OAuth scopes](scopes/regional-australia-bank-scopes.yml): CDR banking authorisation scopes.
+- [Conventions](conventions/regional-australia-bank-conventions.yml): Versioning (x-v/x-min-v), pagination, error envelope.
+- [Error catalog](errors/regional-australia-bank-problem-types.yml): CDR ResponseErrorListV2 / ErrorV2 error model.
+- [Conformance](conformance/regional-australia-bank-conformance.yml): CDR Consumer Data Standards, OAuth2/OIDC/FAPI.
+
+## Docs
+
+- [Data sharing (CDR) help](https://www.regionalaustraliabank.com.au/help-and-support/data-sharing)
+- [CDR Consumer Data Standards](https://consumerdatastandardsaustralia.github.io/standards/#banking-apis)
+- [Website](https://www.regionalaustraliabank.com.au/)
+- [Support](https://www.regionalaustraliabank.com.au/help-and-support)

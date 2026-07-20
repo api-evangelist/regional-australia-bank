@@ -1,0 +1,64 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+note: >-
+  Entity-relationship graph for the PUBLIC Product Reference Data domain, derived
+  from the CDS Banking API schemas. Scoped to the openly implemented product
+  surface; the authenticated CDR banking entities (accounts, transactions, payees,
+  scheduled payments, direct debits, instalment plans) are listed for context but
+  are not part of the public surface.
+entities:
+  - name: BankingProduct
+    id: productId
+    id_type: BankingProductId
+    key_fields: [productId, productCategory, name, description, brand, effectiveFrom, effectiveTo, isTailored]
+    category_enum: [BUSINESS_LOANS, BUY_NOW_PAY_LATER, CRED_AND_CHRG_CARDS, LEASES, MARGIN_LOANS, OVERDRAFTS, PERS_LOANS, REGULATED_TRUST_ACCOUNTS, RESIDENTIAL_MORTGAGES, TERM_DEPOSITS, TRADE_FINANCE, TRANS_AND_SAVINGS_ACCOUNTS, TRAVEL_CARDS]
+  - name: BankingProductDetail
+    note: Full product record returned by getBankingProductDetail; embeds the collections below.
+  - name: BankingProductFeature
+  - name: BankingProductFee
+  - name: BankingProductDepositRate
+  - name: BankingProductLendingRate
+  - name: BankingProductRateTier
+  - name: BankingProductConstraint
+  - name: BankingProductEligibility
+  - name: BankingProductBundle
+relationships:
+  - from: BankingProductDetail
+    to: BankingProductFeature
+    kind: has_many
+    via: features
+  - from: BankingProductDetail
+    to: BankingProductFee
+    kind: has_many
+    via: fees
+  - from: BankingProductDetail
+    to: BankingProductDepositRate
+    kind: has_many
+    via: depositRates
+  - from: BankingProductDetail
+    to: BankingProductLendingRate
+    kind: has_many
+    via: lendingRates
+  - from: BankingProductLendingRate
+    to: BankingProductRateTier
+    kind: has_many
+    via: tiers
+  - from: BankingProductDetail
+    to: BankingProductConstraint
+    kind: has_many
+    via: constraints
+  - from: BankingProductDetail
+    to: BankingProductEligibility
+    kind: has_many
+    via: eligibility
+  - from: BankingProductDetail
+    to: BankingProductBundle
+    kind: has_many
+    via: bundles
+authenticated_context_entities:
+  - BankingAccount (BankingAccountId)
+  - BankingTransaction (BankingTransactionId)
+  - BankingPayee (BankingPayeeId)
+  - BankingScheduledPayment (BankingScheduledPaymentId)
+  - BankingInstalmentPlan (BankingInstalmentPlanId)

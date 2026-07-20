@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+note: >-
+  Cross-cutting request/response semantics for Regional Australia Bank's CDR
+  surface, derived from the harvested CDS Banking API spec. The public Product
+  Reference Data operations are read-only (GET), so there is NO idempotency-key
+  contract; idempotency is not applicable to this surface.
+authentication:
+  public_surface: unauthenticated
+  authenticated_surface: OAuth2 / OIDC (CDR security profile, FAPI-aligned)
+  ref: authentication/regional-australia-bank-authentication.yml
+versioning:
+  style: header
+  request_headers: [x-v, x-min-v]
+  response_header: x-v
+  note: >-
+    Clients MUST send x-v (requested endpoint version). Server responds with the
+    highest supported version between x-min-v and x-v, echoing it in the x-v
+    response header, or 406 Not Acceptable if unsupported.
+pagination:
+  style: page-number
+  params: [page, page-size]
+  defaults: {page: 1, page-size: 25}
+  response_links: LinksPaginated (self, first, prev, next, last)
+  response_meta: MetaPaginated (totalRecords, totalPages)
+idempotency:
+  supported: false
+  note: Public PRD surface is read-only (GET); no idempotency key applies.
+error_envelope:
+  shape: ResponseErrorListV2 (errors[] of ErrorV2 {code, title, detail, meta})
+  format: cdr-error-list-v2
+  ref: errors/regional-australia-bank-problem-types.yml
+filtering:
+  product_query: [effective, updated-since, brand, product-category]
+rate_limiting:
+  note: >-
+    Governed by CDR non-functional requirements (traffic thresholds per data
+    holder); no bank-specific rate-limit headers documented on the public PRD host.
+cross_links:
+  authentication: authentication/regional-australia-bank-authentication.yml
+  errors: errors/regional-australia-bank-problem-types.yml
+  lifecycle: lifecycle/regional-australia-bank-lifecycle.yml
+  scopes: scopes/regional-australia-bank-scopes.yml

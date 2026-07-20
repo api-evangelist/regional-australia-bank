@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+note: >-
+  Regional Australia Bank implements the shared Data Standards Body (DSB) CDR
+  Banking API (CDS v1.36.0) as an accredited data holder. Conformance below is
+  derived from the harvested spec and the CDR standards it conforms to; it is a
+  regulatory conformance posture, not an audited certification program.
+standards:
+  - id: cdr-consumer-data-standards-au
+    conforms: true
+    evidence: >-
+      Implements the DSB CDS Banking API contract; public PRD confirmed live
+      (HTTP 200, x-v 3) at public-data.cdr.regaustbank.io/cds-au/v1/banking/products.
+  - id: oauth2
+    conforms: true
+    evidence: CDR security profile uses OAuth2 Authorization Code with PKCE (x-scopes on operations).
+  - id: oidc
+    conforms: true
+    evidence: CDR security profile mandates OpenID Connect for consumer data sharing.
+  - id: fapi
+    conforms: true
+    evidence: CDR security profile is FAPI 1.0 Advanced-aligned (mTLS-bound tokens, request objects, PAR).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use the CDR ResponseErrorListV2 / ErrorV2 envelope (errors[] with
+      code/title/detail/meta), not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: Standard page/page-size query params with LinksPaginated + MetaPaginated response objects.
+  - id: header-versioning
+    conforms: true
+    evidence: Per-endpoint versioning via required x-v and optional x-min-v request headers (RFC-style content negotiation).

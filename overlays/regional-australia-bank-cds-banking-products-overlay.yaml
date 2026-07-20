@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Regional Australia Bank CDR Banking API
+  version: 1.0.0
+extends: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: Regional Australia Bank
+      x-apievangelist-spec-provenance: >-
+        Shared DSB Consumer Data Standards Banking API (CDS v1.36.0), harvested
+        verbatim from consumerdatastandardsaustralia.github.io and serialised to
+        YAML. Not a Regional-Australia-Bank-proprietary contract.
+      x-apievangelist-public-operations:
+        - listBankingProducts
+        - getBankingProductDetail
+      x-apievangelist-public-base-url: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+      x-apievangelist-auth-model: >-
+        Product Reference Data is public/unauthenticated; all other operations
+        require CDR OAuth2/OIDC accreditation (accredited data recipient).
+  - target: $.paths['/banking/products'].get
+    update:
+      x-apievangelist-public: true
+      x-apievangelist-verified-live: 'HTTP 200, x-v 3, data.products array (2026-07-20)'
+  - target: $.paths['/banking/products/{productId}'].get
+    update:
+      x-apievangelist-public: true

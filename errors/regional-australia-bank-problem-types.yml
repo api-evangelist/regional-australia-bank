@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+format: cdr-error-list-v2
+note: >-
+  Errors are NOT RFC 9457 problem+json. The CDR uses the ResponseErrorListV2
+  envelope - an object with a required `errors` array of ErrorV2 objects, each
+  with `code` (a CDR error-code URN), `title` (stable human summary), `detail`
+  (occurrence-specific explanation), and optional `meta`. The problems below are
+  derived from the 4xx responses documented on the public product operations
+  (listBankingProducts, getBankingProductDetail); the CDR standard defines the
+  full URN registry.
+envelope:
+  schema: '#/components/schemas/ResponseErrorListV2'
+  item_schema: '#/components/schemas/ErrorV2'
+  fields: [code, title, detail, meta]
+problems:
+  - status: 400
+    urn: urn:au-cds:error:v2:Field/Invalid
+    title: Invalid Field
+    remediation: Correct the malformed or out-of-range query field value.
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - status: 400
+    urn: urn:au-cds:error:v2:Field/Missing
+    title: Missing Required Field
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - status: 400
+    urn: urn:au-cds:error:v2:Header/Missing
+    title: Missing Required Header
+    remediation: Supply the required x-v version header.
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - status: 400
+    urn: urn:au-cds:error:v2:Header/InvalidVersion
+    title: Invalid Version
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - status: 400
+    urn: urn:au-cds:error:v2:Field/InvalidDateTime
+    title: Invalid Date
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - status: 400
+    urn: urn:au-cds:error:v2:Field/InvalidPageSize
+    title: Invalid Page Size
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - status: 404
+    urn: urn:au-cds:error:v2:Resource/NotFound
+    title: Resource Not Found
+    remediation: The requested productId does not exist.
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#getBankingProductDetail
+  - status: 406
+    urn: urn:au-cds:error:v2:Header/UnsupportedVersion
+    title: Unsupported Version
+    remediation: Request a version the endpoint supports via x-v / x-min-v.
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts
+  - status: 422
+    urn: urn:au-cds:error:v2:Field/InvalidPage
+    title: Invalid Page
+    remediation: Requested page is out of range for the result set.
+    source_operation: openapi/regional-australia-bank-cds-banking-products-openapi.yml#listBankingProducts

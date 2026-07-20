@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+note: >-
+  Two distinct surfaces. (1) The public Product Reference Data (PRD) API
+  (Get Products / Get Product Detail) is PUBLIC and UNAUTHENTICATED - no API key,
+  no token; only the required `x-v` version header. (2) The authenticated CDR
+  consumer data sharing operations use the CDR security profile: OAuth2
+  Authorization Code with PKCE, OpenID Connect, and FAPI-aligned protections
+  (mutual-TLS sender-constrained tokens, request objects, PAR). Access is limited
+  to accredited data recipients on the CDR Register. The harvested CDS spec does
+  not declare formal `components.securitySchemes`; it carries the required scopes
+  as `x-scopes` extensions per operation.
+summary:
+  types: [none, oauth2, openIdConnect]
+  public_surface: unauthenticated
+  oauth2_flows: [authorizationCode]
+  oauth2_profile: CDR security profile (FAPI 1.0 Advanced-aligned)
+schemes:
+  - name: PublicPRD
+    type: none
+    description: >-
+      Public Product Reference Data endpoints require no authentication. The only
+      mandatory request header is `x-v` (endpoint version). Applies to
+      listBankingProducts and getBankingProductDetail.
+    sources: [openapi/regional-australia-bank-cds-banking-products-openapi.yml]
+  - name: CDR-OAuth2
+    type: oauth2
+    scheme: authorizationCode
+    description: >-
+      OAuth2 Authorization Code with PKCE for consumer data sharing; scopes are
+      the CDR banking scopes (bank:accounts.basic:read, bank:accounts.detail:read,
+      bank:transactions:read, bank:regular_payments:read, bank:payees:read).
+    scopes_artifact: scopes/regional-australia-bank-scopes.yml
+    sources: [openapi/regional-australia-bank-cds-banking-products-openapi.yml]
+  - name: CDR-OIDC
+    type: openIdConnect
+    description: >-
+      OpenID Connect identity layer required by the CDR security profile; issuer
+      and discovery are published per data holder at the CDR InfoSec baseURI.
+    sources: [openapi/regional-australia-bank-cds-banking-products-openapi.yml]

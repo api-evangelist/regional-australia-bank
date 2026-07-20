@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+note: >-
+  Regional Australia Bank does not publish its own API lifecycle/versioning policy;
+  it inherits the DSB Consumer Data Standards lifecycle. Versioning is per-endpoint
+  and header-negotiated. No dedicated API status page or bank-published deprecation
+  policy page was found; the CDS standard maintains the authoritative version and
+  obsolescence registry.
+versioning:
+  scheme: header-per-endpoint
+  request_headers: [x-v, x-min-v]
+  response_header: x-v
+  current:
+    listBankingProducts: '5'
+    getBankingProductDetail: '5'
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+deprecation:
+  policy_url: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+  sunset_header: false
+  note: >-
+    Obsolete endpoint versions are retired through the CDS version negotiation
+    (x-min-v/x-v) and documented as obsolete in the standard; e.g. Get Product
+    Detail lists obsolete v1-v6.
+obsolete_versions:
+  getBankingProductDetail: [v1, v2, v3, v4, v5, v6]
+sla:
+  url: https://consumerdatastandardsaustralia.github.io/standards/#non-functional-requirements
+  note: CDR non-functional requirements define availability/performance targets for data holders.
+status_page: null
+deprecated_operations: []

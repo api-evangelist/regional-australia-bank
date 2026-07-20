@@ -46,6 +46,8 @@ apis:
     type: APIReference
   - url: openapi/regional-australia-bank-cds-banking-products-openapi.yml
     type: OpenAPI
+  - url: overlays/regional-australia-bank-cds-banking-products-overlay.yaml
+    type: Overlay
   description: Public, unauthenticated Consumer Data Right (CDR) Product Reference Data
     (PRD) API. Serves Regional Australia Bank's openly available banking product catalogue
     (Get Products and Get Product Detail) at the CDS base path /cds-au/v1/banking/products,
@@ -53,6 +55,8 @@ apis:
     data.products array; no authentication or CDR accreditation is required for this
     product-reference surface.
 common:
+- type: DomainSecurity
+  url: security/regional-australia-bank-domain-security.yml
 - type: Website
   url: https://www.regionalaustraliabank.com.au/
 - type: Documentation
@@ -61,6 +65,28 @@ common:
   url: https://www.regionalaustraliabank.com.au/help-and-support
 - type: LinkedIn
   url: https://www.linkedin.com/company/regional-australia-bank
+- type: APIReference
+  url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+- type: Authentication
+  url: authentication/regional-australia-bank-authentication.yml
+- type: OAuthScopes
+  url: scopes/regional-australia-bank-scopes.yml
+- type: Conformance
+  url: conformance/regional-australia-bank-conformance.yml
+- type: ErrorCatalog
+  url: errors/regional-australia-bank-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/regional-australia-bank-lifecycle.yml
+- type: Conventions
+  url: conventions/regional-australia-bank-conventions.yml
+- type: DataModel
+  url: data-model/regional-australia-bank-data-model.yml
+- type: MCPServer
+  url: mcp/regional-australia-bank-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/regional-australia-bank-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

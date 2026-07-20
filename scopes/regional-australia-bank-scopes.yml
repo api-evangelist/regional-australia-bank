@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+docs: https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes
+note: >-
+  Regional Australia Bank participates in Australia's Consumer Data Right (CDR)
+  as an accredited data holder. The public Product Reference Data (PRD) surface
+  is unauthenticated and requires NO scope. The authenticated consumer data
+  sharing operations defined by the shared CDS Banking API contract are secured
+  under the CDR security profile (OAuth2 / OpenID Connect, FAPI-aligned) and are
+  accessible only to accredited data recipients registered on the CDR Register.
+  The scopes below are the CDR banking authorisation scopes carried as `x-scopes`
+  extensions on the operations in the harvested CDS spec; they are the DSB
+  standard scopes, not a Regional-Australia-Bank-proprietary set.
+schemes:
+  - name: CDR-OAuth2-OIDC
+    type: oauth2
+    profile: CDR security profile (FAPI 1.0 Advanced-aligned)
+    source: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+    flows:
+      - flow: authorizationCode
+        note: >-
+          Authorization Code with PKCE; issuer/authorization/token endpoints are
+          published per data holder via OIDC discovery at the data holder's
+          CDR InfoSec baseURI (not exposed on the public PRD host).
+scopes:
+  - scope: bank:accounts.basic:read
+    description: Read basic banking account information (account list and summary).
+    flows: [authorizationCode]
+    sources: [openapi/regional-australia-bank-cds-banking-products-openapi.yml]
+  - scope: bank:accounts.detail:read
+    description: Read detailed banking account information for a specific account.
+    flows: [authorizationCode]
+    sources: [openapi/regional-australia-bank-cds-banking-products-openapi.yml]
+  - scope: bank:transactions:read
+    description: Read banking transactions for authorised accounts.
+    flows: [authorizationCode]
+    sources: [openapi/regional-australia-bank-cds-banking-products-openapi.yml]
+  - scope: bank:regular_payments:read
+    description: Read scheduled payments and direct debits for authorised accounts.
+    flows: [authorizationCode]
+    sources: [openapi/regional-australia-bank-cds-banking-products-openapi.yml]
+  - scope: bank:payees:read
+    description: Read saved payees for authorised accounts.
+    flows: [authorizationCode]
+    sources: [openapi/regional-australia-bank-cds-banking-products-openapi.yml]
