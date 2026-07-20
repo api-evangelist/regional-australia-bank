@@ -1,0 +1,66 @@
+aid: regional-australia-bank
+url: https://raw.githubusercontent.com/api-evangelist/regional-australia-bank/refs/heads/main/apis.yml
+name: Regional Australia Bank
+kind: company
+description: Regional Australia Bank is a customer-owned (mutual) authorised deposit-taking
+  institution (ADI) headquartered in Armidale and Port Macquarie, New South Wales. Founded
+  in 1969 as New England Staff Credit Union at the University of New England, it grew through
+  successive credit-union mergers into Community Mutual Group and rebranded as Regional
+  Australia Bank in 2016; it is currently completing a merger with Summerland Bank. As a
+  mutual, its customers are its owners, and it serves more than 100,000 members across
+  regional NSW from roughly 39 locations. As an active ADI it is a designated data holder
+  under Australia's Consumer Data Right (CDR / Open Banking), exposing a public,
+  unauthenticated Product Reference Data (PRD) API conforming to the Data Standards Body
+  (DSB) Consumer Data Standards, alongside the accredited-data-recipient consumer data
+  sharing surface secured under the CDR OAuth2/OIDC model.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Banks
+- Open Banking
+- CDR
+- Consumer Banking
+- Australia
+- Customer-Owned
+- Product Reference Data
+- Mutual Bank
+created: '2026-07-20'
+modified: '2026-07-20'
+specificationVersion: '0.19'
+apis:
+- aid: regional-australia-bank:regional-australia-bank-cdr-product-reference-data-api
+  name: Regional Australia Bank CDR Product Reference Data API
+  tags:
+  - CDR
+  - Open Banking
+  - Product Reference Data
+  - Banking Products
+  - Public
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+  properties:
+  - url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+    type: APIReference
+  - url: openapi/regional-australia-bank-cds-banking-products-openapi.yml
+    type: OpenAPI
+  description: Public, unauthenticated Consumer Data Right (CDR) Product Reference Data
+    (PRD) API. Serves Regional Australia Bank's openly available banking product catalogue
+    (Get Products and Get Product Detail) at the CDS base path /cds-au/v1/banking/products,
+    conforming to the DSB Consumer Data Standards. Confirmed live (HTTP 200, x-v 3) with a
+    data.products array; no authentication or CDR accreditation is required for this
+    product-reference surface.
+common:
+- type: Website
+  url: https://www.regionalaustraliabank.com.au/
+- type: Documentation
+  url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+- type: Support
+  url: https://www.regionalaustraliabank.com.au/help-and-support
+- type: LinkedIn
+  url: https://www.linkedin.com/company/regional-australia-bank
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

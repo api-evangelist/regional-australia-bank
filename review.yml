@@ -1,0 +1,74 @@
+aid: regional-australia-bank
+name: Regional Australia Bank
+review:
+  question: Does Regional Australia Bank expose a confirmed public API surface, and what is its posture?
+  answer: true
+  date: '2026-07-20'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Regional Australia Bank's only confirmed public, machine-consumable API is its
+    Consumer Data Right (CDR) Product Reference Data (PRD) endpoint, mandated for all
+    active Australian ADIs. It was fetched live and returned HTTP 200 with the required
+    x-v response header and a JSON body containing a data.products array
+    (meta.totalRecords = 25). The bank does NOT operate a general-purpose developer
+    portal or a proprietary, self-documented public API program: the conventional
+    developer.regionalaustraliabank.com.au host resolves to a Cloudflare 530 (no origin),
+    there is no public GitHub organisation (github.com/regionalaustraliabank returns 404),
+    and no Up-style personal-banking developer API is published. Beyond the public PRD
+    surface, all consumer data sharing (accounts, transactions, balances) is gated behind
+    the CDR's OAuth2 / OpenID Connect authorisation model and is accessible only to
+    accredited data recipients (ADRs) via the CDR Register - it is not an open,
+    self-serve developer API.
+  cdrPrdConfirmed: true
+  cdrPrdBaseUrl: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+  cdrPrdHttpStatus: 200
+  cdrPrdXV: '3'
+  developerPortal:
+    present: false
+    note: |
+      developer.regionalaustraliabank.com.au returns HTTP 530 (Cloudflare - no origin
+      server); no public developer/API portal or SDK/GitHub presence was found. The
+      bank's public CDR touchpoint is a consumer-facing "Data sharing" help page at
+      https://www.regionalaustraliabank.com.au/help-and-support/data-sharing (HTTP 200).
+  authModel: |
+    Product Reference Data (PRD) is public and unauthenticated. Consumer data sharing
+    (the authenticated CDR banking APIs) uses the CDR security profile - OAuth2 /
+    OpenID Connect (FAPI-aligned) - and is restricted to accredited data recipients
+    registered on the CDR Register operated by the ACCC. Regional Australia Bank
+    participates as a data holder; its unauthenticated public host is
+    public-data.cdr.regaustbank.io.
+  specProvenance: |
+    SHARED CDS STANDARD - NOT BANK-PROPRIETARY. The harvested spec
+    openapi/regional-australia-bank-cds-banking-products-openapi.yml is the Data
+    Standards Body (DSB) "CDR Banking API" OpenAPI 3.0.3 (version 1.36.0), downloaded
+    verbatim from the official Consumer Data Standards Australia distribution
+    (consumerdatastandardsaustralia.github.io) and serialised from JSON to YAML with no
+    content changes. It defines the shared CDS banking contract - including the public
+    Get Products (/banking/products) and Get Product Detail
+    (/banking/products/{productId}) operations that Regional Australia Bank's PRD host
+    implements, plus the broader authenticated banking operations. It is the standard
+    every Australian data holder conforms to, not a Regional Australia Bank
+    proprietary contract. Regional Australia Bank does not publish its own OpenAPI.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+      documented: true
+      note: Public CDR Product Reference Data endpoint. Requires the x-v version header; confirmed live at x-v 3.
+  endpointsConfirmedRest:
+    - GET https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+    - GET https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products/{productId}
+sources:
+  - url: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+    type: APIReference
+    note: Live public PRD endpoint. Fetched HTTP 200 with x-v 3 and a data.products array (meta.totalRecords 25).
+  - url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+    type: Documentation
+    note: Consumer-facing CDR / open banking "Data sharing" page (HTTP 200).
+  - url: https://consumerdatastandardsaustralia.github.io/standards/
+    type: Documentation
+    note: DSB Consumer Data Standards; source of the harvested CDR Banking API OpenAPI 3.0.3 v1.36.0.
+  - url: https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary
+    type: APIReference
+    note: CDR Register brand summary; confirms Regional Australia Bank publicBaseUri https://public-data.cdr.regaustbank.io.
