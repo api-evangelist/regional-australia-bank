@@ -203,6 +203,16 @@ common:
   url: skills/_index.yml
 - type: LLMsTxt
   url: llms/regional-australia-bank-llms.txt
+- type: Deprecation
+  url: lifecycle/regional-australia-bank-lifecycle.yml
+- type: Blog
+  url: https://www.regionalaustraliabank.com.au/the-inside-story
+- type: TermsOfService
+  url: https://www.regionalaustraliabank.com.au/about-us/corporate-documents/policies-and-guides
+- type: PrivacyPolicy
+  url: https://www.regionalaustraliabank.com.au/about-us/corporate-documents/policies-and-guides
+- type: Login
+  url: https://secure.regionalaustraliabank.com.au/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
