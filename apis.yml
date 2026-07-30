@@ -13,7 +13,19 @@ description: Regional Australia Bank is a customer-owned (mutual) authorised dep
   unauthenticated Product Reference Data (PRD) API conforming to the Data Standards Body
   (DSB) Consumer Data Standards, alongside the accredited-data-recipient consumer data
   sharing surface secured under the CDR OAuth2/OIDC model.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/regional-australia-bank.png
 tags:
 - Financial
 - Banks
@@ -28,144 +40,104 @@ created: '2026-07-20'
 modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
-- aid: regional-australia-bank:regional-australia-bank-cdr-product-reference-data-api
-  name: Regional Australia Bank CDR Product Reference Data API
-  tags:
-  - CDR
-  - Open Banking
-  - Product Reference Data
-  - Banking Products
-  - Public
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: regional-australia-bank:regional-australia-bank-banking-account-balances-api
+  name: Regional Australia Bank Banking Account Balances API
+  description: Banking Account Balance endpoints
   humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
   baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
-  properties:
-  - url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
-    type: APIReference
-  - url: openapi/regional-australia-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  - url: overlays/regional-australia-bank-cds-banking-products-overlay.yaml
-    type: Overlay
-  description: Public, unauthenticated Consumer Data Right (CDR) Product Reference Data
-    (PRD) API. Serves Regional Australia Bank's openly available banking product catalogue
-    (Get Products and Get Product Detail) at the CDS base path /cds-au/v1/banking/products,
-    conforming to the DSB Consumer Data Standards. Confirmed live (HTTP 200, x-v 3) with a
-    data.products array; no authentication or CDR accreditation is required for this
-    product-reference surface. The referenced OpenAPI is the shared DSB Consumer Data
-    Standards "CDR Banking API" v1.36.0 (the standardized surface every AU ADI data holder
-    implements), not a bank-proprietary specification.
-- aid: regional-australia-bank:regional-australia-bank-cdr-accounts-balances-api
-  name: Regional Australia Bank CDR Accounts & Balances API
   tags:
-  - CDR
-  - Open Banking
+  - Banking Account Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/regional-australia-bank-banking-account-balances-api-openapi.yml
+  - type: Documentation
+    url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+- aid: regional-australia-bank:regional-australia-bank-banking-account-direct-debits-api
+  name: Regional Australia Bank Banking Account Direct Debits API
+  description: Banking Account Direct Debit endpoints
+  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+  tags:
+  - Banking Account Direct Debits
+  properties:
+  - type: OpenAPI
+    url: openapi/regional-australia-bank-banking-account-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+- aid: regional-australia-bank:regional-australia-bank-banking-account-scheduled-payments-api
+  name: Regional Australia Bank Banking Account Scheduled Payments API
+  description: Banking Account Scheduled Payment endpoints
+  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+  tags:
+  - Banking Account Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/regional-australia-bank-banking-account-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+- aid: regional-australia-bank:regional-australia-bank-banking-account-transactions-api
+  name: Regional Australia Bank Banking Account Transactions API
+  description: Banking Account Transaction endpoints
+  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+  tags:
+  - Banking Account Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/regional-australia-bank-banking-account-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+- aid: regional-australia-bank:regional-australia-bank-banking-accounts-api
+  name: Regional Australia Bank Banking Accounts API
+  description: Banking Account endpoints
+  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
+  tags:
   - Banking Accounts
-  - Account Balances
-  - Consumer Data Sharing
-  - Authorized
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/accounts
   properties:
-  - url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
-    type: APIReference
-  - url: openapi/regional-australia-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized Consumer Data Right (CDR) Banking API family for accounts
-    and balances - Get Accounts, Get Bulk Balances, Get Account Balance and Get Account
-    Detail (paths /banking/accounts, /banking/accounts/balances,
-    /banking/accounts/{accountId}/balance and /banking/accounts/{accountId}). Unlike the
-    public product-reference surface, these endpoints return a consumer's own banking data
-    and are served from Regional Australia Bank's secured MTLS CDR resource server
-    (registered in the CDR Register) under the CDR OAuth2/OIDC model; access requires an
-    Accredited Data Recipient (ADR) and explicit consumer consent, so the host is not
-    publicly browsable. Standardized by the DSB Consumer Data Standards (CDR Banking API
-    v1.36.0); see the referenced OpenAPI.
-- aid: regional-australia-bank:regional-australia-bank-cdr-transactions-api
-  name: Regional Australia Bank CDR Transactions API
+  - type: OpenAPI
+    url: openapi/regional-australia-bank-banking-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+- aid: regional-australia-bank:regional-australia-bank-banking-payees-api
+  name: Regional Australia Bank Banking Payees API
+  description: Banking Payee endpoints
+  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
   tags:
-  - CDR
-  - Open Banking
-  - Banking Transactions
-  - Consumer Data Sharing
-  - Authorized
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/accounts/{accountId}/transactions
+  - Banking Payees
   properties:
-  - url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
-    type: APIReference
-  - url: openapi/regional-australia-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized Consumer Data Right (CDR) Banking API family for account
-    transactions - Get Transactions For Account and Get Transaction Detail (paths
-    /banking/accounts/{accountId}/transactions and
-    /banking/accounts/{accountId}/transactions/{transactionId}). Returns a consenting
-    consumer's own transaction history and is served from Regional Australia Bank's secured
-    MTLS CDR resource server under the CDR OAuth2/OIDC model; access requires an Accredited
-    Data Recipient (ADR) and explicit consumer consent, so the host is not publicly
-    browsable. Standardized by the DSB Consumer Data Standards (CDR Banking API v1.36.0);
-    see the referenced OpenAPI.
-- aid: regional-australia-bank:regional-australia-bank-cdr-direct-debits-scheduled-payments-api
-  name: Regional Australia Bank CDR Direct Debits & Scheduled Payments API
+  - type: OpenAPI
+    url: openapi/regional-australia-bank-banking-payees-api-openapi.yml
+  - type: Documentation
+    url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
+- aid: regional-australia-bank:regional-australia-bank-banking-products-api
+  name: Regional Australia Bank Banking Products API
+  description: Banking Product endpoints
+  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/products
   tags:
-  - CDR
-  - Open Banking
-  - Direct Debits
-  - Scheduled Payments
-  - Consumer Data Sharing
-  - Authorized
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/accounts/direct-debits
+  - Banking Products
   properties:
-  - url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
-    type: APIReference
-  - url: openapi/regional-australia-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized Consumer Data Right (CDR) Banking API family for
-    recurring transactions - Get Direct Debits For Account, Get Bulk Direct Debits, Get
-    Scheduled Payments For Account and Get Scheduled Payments Bulk (paths
-    /banking/accounts/{accountId}/direct-debits, /banking/accounts/direct-debits,
-    /banking/accounts/{accountId}/payments/scheduled and /banking/payments/scheduled).
-    Returns a consenting consumer's own direct-debit and scheduled-payment arrangements,
-    served from Regional Australia Bank's secured MTLS CDR resource server under the CDR
-    OAuth2/OIDC model; access requires an Accredited Data Recipient (ADR) and explicit
-    consumer consent, so the host is not publicly browsable. Standardized by the DSB
-    Consumer Data Standards (CDR Banking API v1.36.0); see the referenced OpenAPI.
-- aid: regional-australia-bank:regional-australia-bank-cdr-payees-api
-  name: Regional Australia Bank CDR Payees API
-  tags:
-  - CDR
-  - Open Banking
-  - Payees
-  - Consumer Data Sharing
-  - Authorized
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-  baseURL: https://public-data.cdr.regaustbank.io/cds-au/v1/banking/payees
-  properties:
-  - url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
-    type: APIReference
-  - url: openapi/regional-australia-bank-cds-banking-products-openapi.yml
-    type: OpenAPI
-  description: Consumer-authorized Consumer Data Right (CDR) Banking API family for saved
-    payees - Get Payees and Get Payee Detail (paths /banking/payees and
-    /banking/payees/{payeeId}). Returns a consenting consumer's own saved payee list,
-    served from Regional Australia Bank's secured MTLS CDR resource server under the CDR
-    OAuth2/OIDC model; access requires an Accredited Data Recipient (ADR) and explicit
-    consumer consent, so the host is not publicly browsable. Standardized by the DSB
-    Consumer Data Standards (CDR Banking API v1.36.0); see the referenced OpenAPI.
+  - type: OpenAPI
+    url: openapi/regional-australia-bank-banking-products-api-openapi.yml
+  - type: Documentation
+    url: https://www.regionalaustraliabank.com.au/help-and-support/data-sharing
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
 common:
 - type: DomainSecurity
   url: security/regional-australia-bank-domain-security.yml
