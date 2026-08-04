@@ -1,0 +1,26 @@
+{
+  "provider": "regional-australia-bank",
+  "sources": [
+    "regional-australia-bank-banking-account-balances-api-openapi.yml",
+    "regional-australia-bank-banking-account-direct-debits-api-openapi.yml",
+    "regional-australia-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "regional-australia-bank-banking-account-transactions-api-openapi.yml",
+    "regional-australia-bank-banking-accounts-api-openapi.yml",
+    "regional-australia-bank-banking-payees-api-openapi.yml",
+    "regional-australia-bank-banking-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "regional-australia-bank-banking-account-balances-api-openapi.yml",
+    "regional-australia-bank-banking-account-direct-debits-api-openapi.yml",
+    "regional-australia-bank-banking-account-scheduled-payments-api-openapi.yml",
+    "regional-australia-bank-banking-account-transactions-api-openapi.yml",
+    "regional-australia-bank-banking-accounts-api-openapi.yml",
+    "regional-australia-bank-banking-payees-api-openapi.yml",
+    "regional-australia-bank-banking-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
