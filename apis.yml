@@ -139,6 +139,8 @@ apis:
   - type: APIReference
     url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
 common:
+- type: Overlay
+  url: overlays/regional-australia-bank-cds-banking-products-overlay.yaml
 - type: DomainSecurity
   url: security/regional-australia-bank-domain-security.yml
 - type: Website
