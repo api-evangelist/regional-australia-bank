@@ -38,7 +38,7 @@ tags:
 - Mutual Bank
 created: '2026-07-20'
 modified: '2026-07-21'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: regional-australia-bank:regional-australia-bank-banking-account-balances-api
   name: Regional Australia Bank Banking Account Balances API
