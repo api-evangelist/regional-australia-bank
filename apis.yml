@@ -161,6 +161,9 @@ apis:
   - type: APIReference
     url: https://consumerdatastandardsaustralia.github.io/standards/#banking-apis
 common:
+- type: CapabilityMap
+  url: capabilities/regional-australia-bank-capability-edges.yml
+  name: Regional Australia Bank Business Capability Map
 - type: Overlay
   url: overlays/regional-australia-bank-cds-banking-products-overlay.yaml
 - type: DomainSecurity
